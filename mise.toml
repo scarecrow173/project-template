@@ -9,12 +9,14 @@ UV_EXCLUDE_NEWER = "1 week"
 [tools]
 uv = "0.11"
 prek = "0.5.5"
+git-lfs = "3.8.0"
 "pipx:apm-cli" = { version = "0.33.0", uvx_args = "--prerelease allow" }
 "pipx:serena-agent" = "1.7.0"
 
 [tasks.setup]
-description = "Install common APM agent dependencies and Git hooks"
+description = "Install APM dependencies, prek hooks and repository-local Git LFS"
 run = [
   "apm install",
   "prek install",
+  "git lfs install --local",
 ]
