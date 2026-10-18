@@ -1,0 +1,16 @@
+[settings]
+minimum_release_age = "7d"
+lockfile = true
+
+[env]
+UV_EXCLUDE_NEWER = "1 week"
+
+# Infrastructure tools only; add a project language toolchain as needed.
+[tools]
+uv = "0.11"
+"pipx:apm-cli" = { version = "0.28.0", uvx_args = "--prerelease allow" }
+"pipx:serena-agent" = "1.7.0"
+
+[tasks.setup]
+description = "Install common APM agent dependencies"
+run = "apm install"

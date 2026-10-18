@@ -1,0 +1,16 @@
+# Consistent text line endings across operating systems.
+* text=auto eol=lf
+
+# Shell and Windows scripting conventions.
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Common binary formats.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.pdf binary
