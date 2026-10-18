@@ -1,0 +1,34 @@
+# Project Template
+
+言語・フレームワーク非依存の、mise + APM による最小開発基盤です。
+このリポジトリにはアプリケーションコード、言語別設定、CI、文書ディレクトリを含めません。
+
+## 新規プロジェクトでの使い方
+
+1. GitHub の **Use this template** から新規リポジトリを作成する。
+2. `README.md` と `apm.yml` の名前・説明をプロジェクトに合わせて変更する。
+3. mise をインストールし、リポジトリで次を実行する。
+
+```sh
+mise install
+mise run setup
+```
+
+4. 生成された `mise.lock` と `apm.lock.yaml` を確認してコミットする。
+5. 使用言語・フレームワークが確定してから `mise.toml` にツール・検証タスクを追加する。
+
+> 初回作成時はツールによる解決がまだ行われていないため、lockfile は含めていません。
+> 生成後の通常運用では `mise install --locked` を使用してください。
+
+## 管理対象
+
+| ファイル | 役割 |
+| --- | --- |
+| `.gitattributes` | OS間の改行・テキスト属性 |
+| `.gitignore` | 秘密情報、ローカルファイル、APM生成物の除外 |
+| `AGENTS.md` | エージェント共通作業規約 |
+| `apm.yml` | 共通のAPMパッケージとMCP設定 |
+| `mise.toml` | 共通開発ツールと `setup` タスク |
+| `apm.lock.yaml` / `mise.lock` | 初期化後に生成・追跡するlockfile |
+
+言語に依存するソース配置、Lint、テスト、ビルドは各プロジェクトが決定します。
