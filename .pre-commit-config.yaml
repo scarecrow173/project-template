@@ -9,3 +9,5 @@ repos:
       - id: check-toml
       - id: mixed-line-ending
       - id: fix-byte-order-marker
+      - id: detect-private-key
+      - id: check-illegal-windows-names
