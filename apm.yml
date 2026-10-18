@@ -11,6 +11,9 @@ dependencies:
   apm:
     - scarecrow173/apm-packages/packages/basic-dev-foundation#main
     - scarecrow173/apm-packages/packages/recommended-dev-suite#main
+    - scarecrow173/apm-packages/packages/doc-driven-dev#main
+    - scarecrow173/apm-packages/packages/review-protocol#main
+    - scarecrow173/cheaper/packages/apm#main
   mcp: []
 devDependencies:
   mcp:
