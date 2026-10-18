@@ -8,10 +8,13 @@ UV_EXCLUDE_NEWER = "1 week"
 # Infrastructure tools only; add a project language toolchain as needed.
 [tools]
 uv = "0.11"
-prek = "latest"
+prek = "0.5.5"
 "pipx:apm-cli" = { version = "0.33.0", uvx_args = "--prerelease allow" }
 "pipx:serena-agent" = "1.7.0"
 
 [tasks.setup]
-description = "Install common APM agent dependencies"
-run = "apm install"
+description = "Install common APM agent dependencies and Git hooks"
+run = [
+  "apm install",
+  "prek install",
+]

@@ -87,7 +87,9 @@ mise run setup
 
 - 初期化後は `mise.lock` を生成・確認してコミットし、以後の復元では `mise install --locked` を使用する。
 - 管理対象ツールを直接起動する必要がある場合は、原則 `mise exec -- <command>` を使用する。
-- `mise run setup` は現在 `apm install` を実行する。言語別の依存関係が追加された場合は、プロジェクト側でセットアップ契約を拡張する。
+- `mise run setup` は `apm install` で依存関係を復元し、`prek install` で Git のコミットフックを有効化する。フック定義は `.pre-commit-config.yaml` を正本とする。
+- Gitフックでは言語非依存の軽量チェックのみ実行し、言語別の Lint・テスト・ビルドは派生リポジトリのmiseタスクで管理する。
+- 設定済みフックを全ファイルに実行する場合は `mise exec -- prek run --all-files` を使用する。
 
 ## AIエージェント環境（APM）
 
