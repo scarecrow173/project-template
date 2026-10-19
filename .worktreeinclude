@@ -8,8 +8,8 @@ apm_modules/
 .agents/
 .sdp/
 
-# Orca needs literal ignored child paths when their parent directory is not
-# ignored. The parent paths (.claude/, .codex/, etc.) are not ignored.
+# Only the listed children are Git-ignored; parent directories such as
+# .claude/ and .codex/ are not ignored.
 .claude/agents/
 .claude/commands/
 .claude/hooks/
