@@ -15,9 +15,9 @@ tmp/
 .cache/
 .mise-data/
 
-# mise local state — keep native dependency lock sidecars trackable.
+# mise local state — keep dependency lock sidecars referenced by mise.lock trackable.
 # mise.lock format v2+ may reference .mise/locks/ by digest for npm/PyPI
-# tools. Those files must be committed with mise.lock for locked installs.
+# tools. Commit the referenced files together with mise.lock for reproducibility.
 .mise/*
 !.mise/locks/
 
