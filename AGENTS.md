@@ -85,7 +85,8 @@ mise install
 mise run setup
 ```
 
-- 初期化後は `mise.lock` を生成・確認してコミットし、以後の復元では `mise install --locked` を使用する。
+- 初期化後は `mise.lock` を生成・確認してコミットし、以後の復元でも `mise install` を使用する。`mise.toml` と整合する lockfile がある場合、そこに固定されたツールバージョンが使われる。
+- APM CLI は `mise.toml` で `github:microsoft/apm` バックエンドを使用する。GitHub 配布バイナリを利用するため、APM CLI 自身の Python/pipx 依存グラフ sidecar は不要となる。
 - mise lockfile 形式 v2 以降では、npm・PyPI系ツールの依存グラフが `.mise/locks/` に生成される場合がある。`mise.lock` が参照する sidecar は一緒にコミットする。`mise lock --sidecars` で参照を確認し、`.gitignore` の `!.mise/locks/` 例外を維持する（`.mise/` 全体を無視しない）。
 - 管理対象ツールを直接起動する必要がある場合は、原則 `mise exec -- <command>` を使用する。
 - `mise run setup` は `apm install` で依存関係を復元し、`prek install` でコミットフックを、`git lfs install --local` でリポジトリローカルの Git LFS フィルターとフックを有効化する。prekのフック定義は `.pre-commit-config.yaml` を正本とする。
