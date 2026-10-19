@@ -1,0 +1,18 @@
+# Local environment files
+.env
+.env.local
+
+# APM package sources and deployed agent assets — let worktree agents use
+# skills/hooks/commands immediately without re-running `apm install`
+apm_modules/
+.agents/
+.sdp/
+.claude/
+.codex/
+.cursor/
+.windsurf/
+.github/agents/
+.github/hooks/
+.github/mcp.json
+.mcp.json
+.vscode/mcp.json
