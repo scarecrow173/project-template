@@ -24,12 +24,17 @@ Git LFS が必要な Git 操作では、mise を有効化したシェルを使�
 > 初回作成時はツールによる解決がまだ行われていないため、lockfile は含めていません。
 > 生成後の通常運用では `mise install --locked` を使用してください。
 
+mise lockfile 形式 v2 以降は、npm・PyPI系ツールの依存グラフが `.mise/locks/` に保存される場合があります。`mise lock --sidecars` で確認し、`mise.lock` が参照するファイルを一緒にコミットしてください。`.mise/` の他のローカル状態はGit管理対象外です。
+
+Orcaでワークツリーを作成するときは、`.worktreeinclude` に列挙した既存のGit無視対象ファイル（ローカル環境設定とAPM展開物）をコピーできます。`mise.lock` と、コミット済みの `.mise/locks/` はGitから各ワークツリーに展開されるためコピー対象には含めません。
+
 ## 管理対象
 
 | ファイル | 役割 |
 | --- | --- |
 | `.gitattributes` | OS間の改行・テキスト属性、Git LFS管理対象 |
 | `.gitignore` | 秘密情報、ローカルファイル、APM生成物の除外 |
+| `.worktreeinclude` | Orca新規ワークツリーへのローカル設定・APM生成物のコピー対象 |
 | `AGENTS.md` | エージェント共通作業規約 |
 | `apm.yml` | 共通のAPMパッケージとMCP設定 |
 | `.pre-commit-config.yaml` | prekによる共通のGitフック |
