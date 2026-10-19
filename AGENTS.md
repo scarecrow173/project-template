@@ -86,6 +86,7 @@ mise run setup
 ```
 
 - 初期化後は `mise.lock` を生成・確認してコミットし、以後の復元では `mise install --locked` を使用する。
+- mise lockfile 形式 v2 以降では、npm・PyPI系ツールの依存グラフが `.mise/locks/` に生成される場合がある。`mise.lock` が参照する sidecar は一緒にコミットする。`mise lock --sidecars` で参照を確認し、`.gitignore` の `!.mise/locks/` 例外を維持する（`.mise/` 全体を無視しない）。
 - 管理対象ツールを直接起動する必要がある場合は、原則 `mise exec -- <command>` を使用する。
 - `mise run setup` は `apm install` で依存関係を復元し、`prek install` でコミットフックを、`git lfs install --local` でリポジトリローカルの Git LFS フィルターとフックを有効化する。prekのフック定義は `.pre-commit-config.yaml` を正本とする。
 - Gitフックでは言語非依存の軽量チェックのみ実行し、言語別の Lint・テスト・ビルドは派生リポジトリのmiseタスクで管理する。
