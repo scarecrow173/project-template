@@ -15,6 +15,12 @@ tmp/
 .cache/
 .mise-data/
 
+# mise local state — keep native dependency lock sidecars trackable.
+# mise.lock format v2+ may reference .mise/locks/ by digest for npm/PyPI
+# tools. Those files must be committed with mise.lock for locked installs.
+.mise/*
+!.mise/locks/
+
 # APM dependencies and generated deployment assets
 apm_modules/
 **/apm_modules/
