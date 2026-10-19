@@ -14,6 +14,8 @@ mise install
 mise run setup
 ```
 
+`mise.toml` では APM CLI を `github:microsoft/apm` で取得します。GitHub 配布バイナリの URL と SHA-256 は `mise.lock` 生成時に記録され、APM CLI 自身の pipx 依存グラフ sidecar は不要です。
+
 `mise run setup` は APM 依存関係を復元し、`prek install` でコミットフックを、`git lfs install --local` でこのリポジトリの LFS フィルターと Git フックを有効化します（グローバルGit設定は変更しません）。
 全ファイルのフックを手動実行する場合は `mise exec -- prek run --all-files` を使用してください。
 Git LFS が必要な Git 操作では、mise を有効化したシェルを使うか、`mise exec -- git push` のように実行してください。初回clone時にLFSオブジェクトが未取得なら、セットアップ後に `mise exec -- git lfs pull` を実行してください。
@@ -22,7 +24,7 @@ Git LFS が必要な Git 操作では、mise を有効化したシェルを使�
 5. 使用言語・フレームワークが確定してから `mise.toml` にツール・検証タスクを追加する。
 
 > 初回作成時はツールによる解決がまだ行われていないため、lockfile は含めていません。
-> 生成後の通常運用では `mise install --locked` を使用してください。
+> `mise.lock` の生成・コミット後も通常の `mise install` を使用します。`mise.toml` と整合する lockfile があれば、そこに固定されたツールバージョンが使われます。
 
 mise lockfile 形式 v2 以降は、npm・PyPI系ツールの依存グラフが `.mise/locks/` に保存される場合があります。`mise lock --sidecars` で確認し、`mise.lock` が参照するファイルを一緒にコミットしてください。`.mise/` の他のローカル状態はGit管理対象外です。
 
